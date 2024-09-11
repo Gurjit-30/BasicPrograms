@@ -5,7 +5,7 @@ int main(){
     cin>>n;
     int arr[n];
     int s=0;
-    for(int i =0;i<n;i++){
+    for(int i =0;i<5;i++){
         cin>>arr[i];
     }
     for(int i =0;i<n;i++){
