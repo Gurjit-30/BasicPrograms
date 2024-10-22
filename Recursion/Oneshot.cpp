@@ -5,8 +5,9 @@
 //recursive call: calling function
 //recursion happens in stack
 //recursive call and base case is mandatorary,whereas work is optional
-
+//2 two types of output return : 1)printing while going to base  2)while returning from base
 #include<iostream>
+#include<string>
 using namespace std;
 
 
@@ -65,3 +66,28 @@ using namespace std;
 //      cin>>n;
 //      cout<<fib(n);
 // }
+
+//4.print the string of number
+// void print(int n){
+//     if(n==0){
+//         return;
+//     }
+//     string arr[10]={"zero","one","two","three","four","five","six","seven","eight","nine"};
+//     int r=0;
+//     r=n%10;
+//      print(n/10);
+//     cout<<arr[r]<<" ";
+    
+    
+
+
+
+// }
+// int main(){
+//      int n;
+//      cin>>n;
+//      print(n);
+// }
+
+
+
