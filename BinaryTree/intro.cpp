@@ -36,6 +36,7 @@
 //}
 #include<iostream>
 #include<vector>
+#include<queue>
 using namespace std;
 class node{//make a node which will have 3 parts : data ,pointer to left ,pointer to right
     public:
@@ -73,29 +74,9 @@ static int in = -1;//to traverse the vector
         preorder(root->left);
         preorder(root->right);
     }
-    void inorder( node* root){
-        if(root==NULL){
-            return;
-        }
-        inorder(root->left);
-        cout<<root->data<<" ";
-        inorder(root->right);
-    }
-    void postorder(node* root){
-        if(root==NULL){
-            return;
-
-        }
-        postorder(root->left);
-        postorder(root->right);
-        cout<<root->data<<" ";
-    }
-
     int main(){
         vector<int> v ={1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
        node* root= build(v);
-        cout<<root->data<<endl;
-    //    preorder(root);
-    //    inorder(root);
-       postorder(root);
+    //    cout<<"root="<<root->data<<endl;
+       preorder(root);
     }
