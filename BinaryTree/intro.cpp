@@ -36,6 +36,7 @@
 //}
 #include<iostream>
 #include<vector>
+#include<queue>
 using namespace std;
 class node{//make a node which will have 3 parts : data ,pointer to left ,pointer to right
     public:
@@ -73,9 +74,45 @@ static int in = -1;//to traverse the vector
         preorder(root->left);
         preorder(root->right);
     }
+    void level(node* root){
+        if(root ==NULL){
+            return;
+        }
+
+        queue<node*> q ;
+        q.push(root);
+        q.push(NULL);
+    while(!q.empty()){
+
+        node * curr=q.front();
+        q.pop();
+        if(curr==NULL){
+            cout<<endl;
+            if(q.empty()){
+                break;
+            }
+            q.push(NULL);
+        }else{
+        cout<<curr->data<<" ";
+        if(root->left != NULL){
+            q.push(curr->left);
+        }
+        if(root->right!=NULL){
+            q.push(curr->right);
+        }
+
+        }
+    }
+
+
+       
+       
+
+    }
     int main(){
         vector<int> v ={1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
        node* root= build(v);
     //    cout<<"root="<<root->data<<endl;
-       preorder(root);
+    //    preorder(root);
+    level(root);
     }
