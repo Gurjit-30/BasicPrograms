@@ -94,10 +94,10 @@ static int in = -1;//to traverse the vector
             q.push(NULL);
         }else{
         cout<<curr->data<<" ";
-        if(root->left != NULL){
+        if(curr->left != NULL){
             q.push(curr->left);
         }
-        if(root->right!=NULL){
+        if(curr->right!=NULL){
             q.push(curr->right);
         }
 
@@ -109,10 +109,20 @@ static int in = -1;//to traverse the vector
        
 
     }
+    int height(node* root){
+    if(root==NULL){
+        return 0;
+    }
+    int leftht=height(root->left);
+    int rightht=height(root->right);
+    int cur=max(leftht,rightht)+1;
+    return cur;
+}
     int main(){
         vector<int> v ={1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
        node* root= build(v);
     //    cout<<"root="<<root->data<<endl;
     //    preorder(root);
     level(root);
+    cout<<height(root);
     }
