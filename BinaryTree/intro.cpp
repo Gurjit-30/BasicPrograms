@@ -65,17 +65,37 @@ static int in = -1;//to traverse the vector
 
 
     }
-    void preorder (node* root) {
+    void preorder (node* root) {//traversals 
         if(root==NULL){
             return;
             }
-        cout<< root->data;
+        cout<<"preorder " <<root->data<<" ";
         preorder(root->left);
         preorder(root->right);
     }
+    void inorder( node* root){
+        if(root==NULL){
+            return;
+        }
+        inorder(root->left);
+        cout<<root->data<<" ";
+        inorder(root->right);
+    }
+    void postorder(node* root){
+        if(root==NULL){
+            return;
+
+        }
+        postorder(root->left);
+        postorder(root->right);
+        cout<<root->data<<" ";
+    }
+
     int main(){
         vector<int> v ={1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
        node* root= build(v);
-    //    cout<<"root="<<root->data<<endl;
-       preorder(root);
+        cout<<root->data<<endl;
+    //    preorder(root);
+    //    inorder(root);
+       postorder(root);
     }
