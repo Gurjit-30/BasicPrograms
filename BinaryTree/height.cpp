@@ -84,15 +84,59 @@ int sum(node* root){
     int rights=sum(root->right);
     return lefts+rights+root->data;
 }
+bool iss(node* root1 ,node* root2){
+    //base case
+    if(root1==NULL &&root2==NULL){
+        return true;
+
+    }else if(root1==NULL || root2 ==NULL){
+        return false;
+    }
+    if(root1->data != root2->data){//to return false if values of nodes does not matches 
+        return false;
+    }
+     return iss(root1->left,root2->left)&&
+    iss(root1->right,root2->right);//this function will only return true if both of answer is true
+}
+bool issubtree(node* r,node* sr){
+    //base condition 
+    if(r==NULL && sr==NULL){
+        return true;
+
+
+    }else if(r==NULL || sr==NULL){
+        return false;
+
+    }
+    if(r->data == sr->data){
+        //check for identical
+        if(iss(r,sr)){
+            return true;//to tackle with multiple nodes having same node value.
+        }
+
+    }
+    int islefts=issubtree(r->left,sr);//storing the result( 0 or 1)in variable ,,returns 1 if found in left side and vice versa
+    if(!islefts){//if not found in left ,then only look for right and return value
+        
+    return issubtree(r->right,sr);
+    }
+    return true;
+
+
+}
 
 int main(){
-    vector<int> v={1,2,4,-1,-1,5,-1,6,-1,7,-1,-1,3,-1,-1};
+    vector<int> v={1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
     node* root=build(v);
     // cout<<root->data;
-    cout<<height(root)<<endl;
-    cout<<count(root);
-    level(root);
-    cout<<sum(root);
+    // cout<<height(root)<<endl;
+    // cout<<count(root);
+    // level(root);
+    // cout<<sum(root);
+     node* sr=new node(2);//creating a subroot
+    sr->left=new node(4);
+     sr->right=new node(5);
+    cout<<issubtree(root,sr);
 
 
     

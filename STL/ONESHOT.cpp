@@ -58,6 +58,11 @@
 
 
 
+///map : stl conatainer 
+//map<int,int>m ..creating a map
+//m[key]=val;//setting value to key
+//cout<<m[key];...access val using key
+//m.count(key);...1 if key present
 
 
 
