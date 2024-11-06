@@ -16,7 +16,7 @@ class node{//make a node which will have 3 parts : data ,pointer to left ,pointe
 };
 int height(node* root){
     if(root==NULL){
-        return 0;
+        return 0;//if it is for nodes ,but if it is edges is will be -1
     }
     int lefth=height(root->left);
     int righth=height(root->right);
@@ -124,6 +124,62 @@ bool issubtree(node* r,node* sr){
 
 
 }
+void kthhelp(node * root, int k ,int curr){
+    //base condition 
+    if(root ==NULL){
+        return;
+    }
+    
+    
+    
+    
+    //this is helper function ,which will perform recursion
+    if(curr ==k){//to check if we reached our required level
+        cout<<root->data<<" ";
+        return;
+    }
+    //if not equal ,then it will call it's children 
+    kthhelp(root->left,k,curr+1);//left
+    kthhelp(root->right,k,curr+1);
+
+}
+void kthlevel(node* root ,int k){
+    kthhelp(root,k,1);
+    cout<<endl;
+
+
+}
+void kth(node* root, int k) {
+   queue<node*>q;
+   q.push(root);
+   int level=1;
+   while(!q.empty()){
+    int size=q.size();
+    if(level==k){
+        for(int i=0;i<size;i++){
+            node* cur=q.front();
+            q.pop();
+            cout<<cur->data<<" ";
+
+        }
+        return;
+    }
+    for(int i=0;i<size;i++){
+        node* cur =q.front();
+        q.pop();
+        if(cur->left){q.push(cur->left);}
+        if(cur->right){
+            q.push(cur->right);
+        }
+    }
+    level++;
+
+
+   }
+}
+
+
+
 
 int main(){
     vector<int> v={1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
@@ -136,8 +192,9 @@ int main(){
      node* sr=new node(2);//creating a subroot
     sr->left=new node(4);
      sr->right=new node(5);
-    cout<<issubtree(root,sr);
+    // cout<<issubtree(root,sr);
 
-
+     kthlevel(root,2);
+    
     
 }
